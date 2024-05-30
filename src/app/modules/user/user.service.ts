@@ -6,7 +6,7 @@ import { NewUser, TUser } from "./user.interface";
 import { userModel } from "./user.model";
 
 const createStudentIntoDb = async (password: string, studentData: Student) => {
-  let userData: NewUser= {};
+  let userData: NewUser = {};
   if (!password) {
     userData.password = config.default_pass as string;
   } else {
@@ -14,7 +14,7 @@ const createStudentIntoDb = async (password: string, studentData: Student) => {
   }
   //set Role
   userData.role = "student";
-  userData.id = "20300201";
+  userData.id = "20300203";
 
   //create user
   const newUser = await userModel.create(userData);

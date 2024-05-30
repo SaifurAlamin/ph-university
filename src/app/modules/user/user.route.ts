@@ -1,10 +1,15 @@
-import express from 'express'
+import express, { NextFunction, Request, Response } from 'express'
 import { userController } from './user.controller';
 
 
 const route = express.Router()
 
-route.post('/create-student',userController.createStudent)
+const armyProtector = (req: Request, res: Response, next: NextFunction) => {
+    console.log('object route Hi guys')
+    next()
+}
+
+route.post('/create-student', armyProtector, userController.createStudent)
 
 
 
