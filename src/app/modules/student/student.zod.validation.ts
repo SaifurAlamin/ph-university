@@ -1,4 +1,4 @@
-import { object, z } from "zod";
+import { z } from "zod";
 
 // GUrdian interface validation schema
 const gurdianSchema = z.object({
@@ -11,20 +11,20 @@ const gurdianSchema = z.object({
 // Student interface validation schema
 const createStudentValidation = z.object({
   body: z.object({
-    id: z.string().min(1, "ID cannot be empty"),
     password: z.string().max(20, "pass is required"),
-    name: z.object({
-      firstName: z.string().min(1, "First name cannot be empty"),
-      lastName: z.string().min(1, "Last name cannot be empty"),
+    student: z.object({
+      name: z.object({
+        firstName: z.string().min(1, "First name cannot be empty"),
+        lastName: z.string().min(1, "Last name cannot be empty"),
+      }),
+      dateOfBirth: z.string().min(1, "Date of birth cannot be empty"),
+      email: z.string().email("Invalid email format"),
+      gender: z.enum(["female", "male", "other"]),
+      contactNumber: z.string().optional(),
+      profileImg: z.string().optional(),
+      bloodGroup: z.enum(["A+", "B+", "O+"]),
+      gurdian: gurdianSchema,
     }),
-    dateOfBirth: z.string().min(1, "Date of birth cannot be empty"),
-    email: z.string().email("Invalid email format"),
-    gender: z.enum(["female", "male", "other"]),
-    contactNumber: z.string().optional(),
-    profileImg: z.string().optional(),
-    bloodGroup: z.enum(["A+", "B+", "O+"]),
-    gurdian: gurdianSchema,
-   
   }),
 });
 export const studentValidations = {
