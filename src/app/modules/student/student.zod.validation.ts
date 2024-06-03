@@ -13,7 +13,6 @@ const guardianSchema = z.object({
 // Student interface validation schema
 const createStudentValidation = z.object({
   id: z.string().min(1, { message: "ID is required" }),
-  user: z.string().min(1, { message: "User ID is required" }),
   name: z.object({
     firstName: z.string().min(1, { message: "First name is required" }),
     lastName: z.string().min(1, { message: "Last name is required" }),

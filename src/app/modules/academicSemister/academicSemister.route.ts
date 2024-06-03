@@ -1,7 +1,7 @@
 import express, { NextFunction, Request, Response } from "express";
-import { academicSemisterController, userController } from "./academicSemister.controller";
+import { academicSemisterController } from "./academicSemister.controller";
 import { AnyZodObject } from "zod";
-import { studentValidations } from "../student/student.zod.validation";
+import { academicSemisterValidation } from "./academicSemister.validation";
 
 const route = express.Router();
 
@@ -19,8 +19,8 @@ const validateRequest = (schema: AnyZodObject) => {
 };
 
 route.post(
-    "/create-student",
-    validateRequest(studentValidations.createStudentValidation),
+    "/create-academic-student",
+    validateRequest(academicSemisterValidation.createAcademicSemisterValidationSchema),
     academicSemisterController.createAcademicSemister
 );
 
