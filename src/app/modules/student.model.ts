@@ -4,32 +4,32 @@ import { GUrdian, Student } from "./student/student.interface";
 
 const gurdianSchema = new Schema<GUrdian>({
 
-        fatherName: {
-          type: String,
-          required: true,
-        },
-        motherName: {
-          type: String,
-          required: true,
-        },
-        motherNumber: {
-          type: String,
-          required: true,
-        },
-        fatherNumber: {
-          type: String,
-          required: true,
-        },
-      
+  fatherName: {
+    type: String,
+    required: true,
+  },
+  motherName: {
+    type: String,
+    required: true,
+  },
+  motherNumber: {
+    type: String,
+    required: true,
+  },
+  fatherNumber: {
+    type: String,
+    required: true,
+  },
+
 })
 
 const studentSchema = new Schema<Student>({
-  id: { type: String,required:true,unique:true },
-  user:{
+  id: { type: String, required: true, unique: true },
+  user: {
     type: Schema.Types.ObjectId,
-    required:[true,'User Id is required'],
-    unique:true,
-    ref:'User'
+    required: [true, 'User Id is required'],
+    unique: true,
+    ref: 'User'
   },
   name: {
     firstName: {
@@ -42,22 +42,26 @@ const studentSchema = new Schema<Student>({
     },
   },
   dateOfBirth: { type: String, required: true },
-  email: { type: String, required: true,unique:true },
+  email: { type: String, required: true, unique: true },
   gender: {
-    type:String,
-    enum: ["female", "male","other"],
-    required:true
+    type: String,
+    enum: ["female", "male", "other"],
+    required: true
   },
   contactNumber: { type: String },
   profileImg: { type: String },
   bloodGroup: {
-    type:String,
-    enum:["A+", "B+", "O+"],
-    required:true,
+    type: String,
+    enum: ["A+", "B+", "O+"],
+    required: true,
   },
   gurdian: gurdianSchema,
- 
-});
+
+},
+  {
+    timestamps: true
+  }
+);
 
 
 
