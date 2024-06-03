@@ -8,6 +8,7 @@ import express, {
 import cors from "cors";
 import { studentsRoute } from "./app/modules/student/student.router";
 import { userRoute } from "./app/modules/user/user.route";
+import { academicSemisterRoute } from "./app/modules/academicSemister/academicSemister.route";
 const app: Application = express();
 // const port = 3000
 
@@ -18,6 +19,7 @@ app.use(cors());
 // application Route
 app.use("/api/v1/students", studentsRoute);
 app.use("/api/v1/users", userRoute);
+app.use("/api/v1/academic-semister", academicSemisterRoute);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello World!");
