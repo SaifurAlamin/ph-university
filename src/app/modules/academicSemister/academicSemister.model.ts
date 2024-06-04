@@ -9,7 +9,7 @@ export const Months: TMonth[] = [
 
 const AcademicSemisterSchema = new Schema<TAcademicSemister>({
   name: { type: String, required: true, enum: ['Autumn', 'Summer', 'Fall'] },
-  year: { type: Date, required: true },
+  year: { type: String, required: true },
   code: { type: String, required: true, enum: ['01', '02', '03'] },
   startMonth: { type: String, required: true, enum: Months },
   endMonth: { type: String, required: true, enum: Months },

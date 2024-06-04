@@ -1,25 +1,18 @@
-import { NextFunction, Request, Response } from "express";
+import { academicSemisterServices } from "./academicSemister.service";
+import { catchAsync } from "../../utils/catchAsync";
 
+const createAcademicSemister = catchAsync(async (req, res) => {
+  const result = await academicSemisterServices.createAcademicSemisterIntoDb(
+    req.body
+  );
 
-const createAcademicSemister = async (req: Request, res: Response, next: NextFunction) => {
-  try {
-    const { password, student: studentData } = req.body;
-    //Zod validation
-    // const zodParseData = studentValidationSchema.parse(studentData);
-
-
-
-
-    res.status(200).json({
-      success: true,
-      message: "Student created successfully",
-
-    });
-  } catch (err) {
-    next(err)
-  }
-};
+  res.status(200).json({
+    success: true,
+    message: "Semister created successfully",
+    data: result,
+  });
+});
 
 export const academicSemisterController = {
-  createAcademicSemister
-}
+  createAcademicSemister,
+};
