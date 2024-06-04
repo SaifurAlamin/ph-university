@@ -18,11 +18,23 @@ const validateRequest = (schema: AnyZodObject) => {
         }
     };
 };
-
 route.post(
     "/create",
     validateRequest(academicSemisterValidation.createAcademicSemisterValidation),
     academicSemisterController.createAcademicSemister
+);
+route.get(
+    "/getAllSemister",
+    academicSemisterController.getAllSemister
+);
+route.get(
+    "/getAcademicSemister/:semisterId",
+    academicSemisterController.getSingleAcademicSemister
+);
+route.patch(
+    "/updateAcademicSemister/:semisterId",
+    validateRequest(academicSemisterValidation.updateAcademicSemisterValidation),
+    academicSemisterController.updateAcademicSemister
 );
 
 export const academicSemisterRoute = route;
