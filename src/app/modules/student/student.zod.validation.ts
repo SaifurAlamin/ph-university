@@ -24,6 +24,7 @@ const createStudentValidation = z.object({
       profileImg: z.string().optional(),
       bloodGroup: z.enum(["A+", "B+", "O+"]),
       gurdian: gurdianSchema,
+      admissionSemister: z.string(),
     }),
   }),
 });
