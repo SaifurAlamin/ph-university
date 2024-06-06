@@ -6,6 +6,7 @@ import { Student } from "../student/student.interface";
 import { NewUser, TUser } from "./user.interface";
 // import { NewUser, TUser } from "./user.interface";
 import { userModel } from "./user.model";
+import { generateStudentId } from "./user.utils";
 
 const createStudentIntoDb = async (password: string, payload: Student) => {
   const userData: Partial<TUser> = {};
@@ -17,14 +18,10 @@ const createStudentIntoDb = async (password: string, payload: Student) => {
   //set Role
   userData.role = "student";
 
-  const generateStudentId = (payload: TAcademicSemister) => {
-    const currentId = (0).toString().padStart(4, '0')
-    const incrementId = +currentId + 1
-    const academicId = `${payload.year}${payload.code}${incrementId}`
-    return academicId;
-  }
+
   //find academic semister info 
   const academicSemisterInfo = await academicSemisterModel.findById(payload.admissionSemister)
+  console.log(academicSemisterInfo)
   userData.id = await generateStudentId(academicSemisterInfo as TAcademicSemister)
 
   //create user
