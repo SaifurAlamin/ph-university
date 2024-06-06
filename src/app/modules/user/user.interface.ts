@@ -1,5 +1,5 @@
 export type TUser = {
-  id: string;
+  id: string | undefined;
   password: string;
   needPassChange: boolean;
   role: "admin" | "student" | "faculty";

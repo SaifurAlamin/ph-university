@@ -20,6 +20,7 @@ export type Student = {
     dateOfBirth: string;
     gurdian : GUrdian;
     bloodGroup: 'A+'| 'B+' | 'O+';
+    admissionSemister: Types.ObjectId;
     profileImg?: string;
    
   }

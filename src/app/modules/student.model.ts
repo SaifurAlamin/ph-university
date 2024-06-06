@@ -56,12 +56,12 @@ const studentSchema = new Schema<Student>({
     required: true,
   },
   gurdian: gurdianSchema,
-
-},
-  {
-    timestamps: true
+  admissionSemister: {
+    type: Schema.Types.ObjectId,
+    ref: 'AcademicSemister'
   }
-);
+
+});
 
 
 
