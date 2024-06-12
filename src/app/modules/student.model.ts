@@ -59,7 +59,11 @@ const studentSchema = new Schema<Student>({
   admissionSemister: {
     type: Schema.Types.ObjectId,
     ref: 'AcademicSemister'
-  }
+  },
+  isDeleted: {
+    type: Boolean,
+    default: false,
+  },
 
 });
 

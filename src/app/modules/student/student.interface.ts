@@ -1,6 +1,6 @@
 import { Types } from "mongoose";
 
-export type GUrdian ={
+export type GUrdian = {
     fatherName: string;
     fatherNumber: string;
     motherName: string;
@@ -8,19 +8,20 @@ export type GUrdian ={
 }
 
 export type Student = {
-    id:string;
+    id: string;
     user: Types.ObjectId,
     name: {
-        firstName:string;
-        lastName:string;
+        firstName: string;
+        lastName: string;
     },
-    gender:'male' | 'female'|'other';
-    contactNumber? : string;
+    gender: 'male' | 'female' | 'other';
+    contactNumber?: string;
     email?: string;
     dateOfBirth: string;
-    gurdian : GUrdian;
-    bloodGroup: 'A+'| 'B+' | 'O+';
+    gurdian: GUrdian;
+    bloodGroup: 'A+' | 'B+' | 'O+';
     admissionSemister: Types.ObjectId;
     profileImg?: string;
-   
-  }
+    isDeleted: boolean,
+
+}
